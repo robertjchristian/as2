@@ -1,12 +1,14 @@
 *~
 classes
-AS2_DB_CONFIG.log
-AS2_DB_CONFIG.properties
-AS2_DB_CONFIG.script
-AS2_DB_RUNTIME.log
-AS2_DB_RUNTIME.properties
-AS2_DB_RUNTIME.script
-client_server_session*.log
-client_server_session*.log.lck
+install/log
+install/messages
+install/AS2_DB_CONFIG.log
+install/AS2_DB_CONFIG.properties
+install/AS2_DB_CONFIG.script
+install/AS2_DB_RUNTIME.log
+install/AS2_DB_RUNTIME.properties
+install/AS2_DB_RUNTIME.script
+install/client_server_session*.log
+install/client_server_session*.log.lck
 mendelson_opensource_AS2.lock
 
