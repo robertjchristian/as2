@@ -46,9 +46,7 @@ public class AS2 {
         System.out.println("-allowallclients: Allows client connections from every host. Without this setting client connections are allowed from localhost only");
     }
 
-    /**Method to start the server on from the command line*/
-    public static void main(String args[]) {
-    	
+    public static void cleanup() {
     	// RJC:  Runtime creates database, lock, and log artifacts.  During 
     	// development time this is very annoying.  Temporarily cleaning
     	// up these artifacts...
@@ -84,9 +82,16 @@ public class AS2 {
     				
     			}
     		}
-    	}
-    	
+    	}   	
 
+    }
+    
+    /**Method to start the server on from the command line*/
+    public static void main(String args[]) {
+    	
+    	// TODO remove
+    	cleanup();
+    	
     	
         String language = null;
         boolean startHTTP = true;
