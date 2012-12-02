@@ -6,7 +6,7 @@ AS2_DB_CONFIG.script
 AS2_DB_RUNTIME.log
 AS2_DB_RUNTIME.properties
 AS2_DB_RUNTIME.script
-client_server_session0.log
-client_server_session0.log.lck
+client_server_session*.log
+client_server_session*.log.lck
 mendelson_opensource_AS2.lock
 
