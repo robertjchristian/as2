@@ -1,7 +1,9 @@
 *~
 classes
+install/temp/
 install/log
 install/messages
+install/AS2_DB_RUNTIME.data
 install/AS2_DB_CONFIG.log
 install/AS2_DB_CONFIG.properties
 install/AS2_DB_CONFIG.script
