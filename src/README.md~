@@ -1,0 +1,7 @@
+original artifacts
+=======
+
+The source module contains only Java code - no requisite libraries, sql, etc.  So, the install zipvis also required in order for the project to work.  The two artifacts below serve as the basis of the fork. 
+
+* The source for version 39 is in a CVS repository and can be found [(here)](http://mec-as2.cvs.sourceforge.net/viewvc/mec-as2/39/ "Mendelson AS2 b39 Source").
+* The install for version 39 is available [(here)](http://sourceforge.net/projects/mec-as2/files/ "Mendelson AS2 b39 Binary").
