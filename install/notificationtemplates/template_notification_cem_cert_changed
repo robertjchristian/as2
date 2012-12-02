@@ -1,0 +1,26 @@
+$Header:$
+This file contains the mail template for a certificate change as result of a CEM
+The following variables will be substituted:
+${PRODUCTNAME}: The productname of the AS2 server
+${HOST}: The host where the AS2 server runs at
+${CERTIFICATEDESCRIPTION}: Describes which certificates are used now
+${CERTIFICATETECHDETAILS}: Tech details about the certificates that have been mentioned in this notification
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Primary certificate changed by CEM
+
+
+[BODY]
+As result of a CEM a primary certificate has been changed.
+
+${CERTIFICATEDESCRIPTION}
+
+Please have a look at your system to check the new settings. If you do not trust these changes please
+revert them and contact your partner immediatly.
+
+Detailed information about the certificate(s) that are mentioned here:
+
+${CERTIFICATETECHDETAILS}
+
+--Please do not reply to this mail--

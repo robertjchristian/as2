@@ -1,0 +1,15 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer den Test der eMail Einstellungen.
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+${PRODUCTNAME}: Produktname
+${HOST}: Host, auf dem der Server laeuft
+${USER}: Benutzer, unter dem der Server laeuft
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Nachricht zur Konfigurationspruefung
+
+
+[BODY]
+Diese Nachricht wurde durch den Benutzer ${USER} auf dem Host ${HOST} initiiert. Durch das Erhalten dieser Nachricht ist sicher gestellt, dass die Einstellungen im ${PRODUCTNAME} fuer die Benachrichtigung via eMail korrekt sind.
+
+--Bitte antworten Sie nicht auf diese Nachricht--

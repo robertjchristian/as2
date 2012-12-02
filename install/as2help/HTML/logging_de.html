@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Log</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Log der Vorg&auml;nge und Nachrichten</h2>
+<hr>
+<h3><a href="#globallog">Globales Log<br>
+  </a><a href="#logperpip">Log pro Nachricht<br>
+  </a></h3>
+<h3><a name="globallog" id="globallog"></a>Globales Log</h3>
+  
+<p> Jede Operation des AS2 Servers wird in einem Log festgehalten. Das 
+  Log wird nicht nur in der &Uuml;bersichtsanzeige der Nachrichten gezeigt, sondern ist 
+  auch als Datei verf&uuml;gbar. Sie finden die Logdateien im Unterverzeichnis 
+  &quot;log&quot; unterhalb des Hauptverzeichnisses der AS2 Installation.<br>
+  F&uuml;r jede Nachricht gibt es in der &Uuml;bersichtsanzeige einen Eintrag, der 
+  den aktuellen Status und die Richtung beinhaltet. Dabei werden folgende Icon 
+  verwendet:</p>
+<table width="75%" border="0">
+  <tr>
+    <td width="3%"><img src="../images/in16x16.gif" width="16" height="16"></td>
+    <td width="97%">Eingehende Nachricht (Initialrichtung)</td>
+  </tr>
+  <tr>
+    <td><img src="../images/out16x16.gif" width="16" height="16"></td>
+    <td>Ausgehende Nachrichte (Initialrichtung)</td>
+  </tr>
+  <tr>
+    <td><img src="../images/state_finished16x16.gif" width="16" height="16"></td>
+    <td>Kommunikation wurde erfolgreich beendet</td>
+  </tr>
+  <tr>
+    <td><img src="../images/state_pending16x16.gif" width="16" height="16"></td>
+    <td>Nachricht im Wartezustand, es fehlt noch eine MDN (Empfangsbestätigung) zur Vervollst&auml;ndigung</td>
+  </tr>
+  <tr>
+    <td><img src="../images/state_stopped16x16.gif" width="16" height="16"></td>
+    <td>Nachrichtenübertragung wurde fehlerhaft beendet</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<h3><a name="logperpip" id="logperpip"></a>Log pro Nachricht</h3>
+<p>Jede Nachricht besteht aus einer Nachricht und einer Empfangsbestätigung. Wenn man sich die 
+  Details einer Nachrichtenübertragung anschaut, werden folgende Icons benutzt:</p>
+<table width="75%" border="0">
+  <tr> 
+    <td width="3%"><img src="../images/in16x16.gif" width="16" height="16"></td>
+    <td width="97%">Eingehende Nachricht oder eingehende Empfangsbestätigung</td>
+  </tr>
+  <tr> 
+    <td><img src="../images/out16x16.gif" width="16" height="16"></td>
+    <td>Ausgehende Nachricht oder ausgehende MDN</td>
+  </tr>
+  <tr> 
+    <td><img src="../images/message16x16.gif" width="16" height="16"></td>
+    <td>Nachricht</td>
+  </tr>
+  <tr> 
+    <td><img src="../images/signal16x16.gif" width="16" height="16"></td>
+    <td>MDN</td>
+  </tr>
+</table>
+<p>F&uuml;r jede Nachricht wird gespeichert, welche Operationen durchgef&uuml;hrt wurden. 
+  Ausserdem sind in der GUI die Rohnachrichten f&uuml;r alle Anfragen und entsprechenden Antworten
+  einsehbar. </p>
+<p>&nbsp;</p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 8.08.11 12:23 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

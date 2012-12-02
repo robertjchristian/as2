@@ -1,0 +1,23 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer den Test der eMail Einstellungen.
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+
+${PRODUCTNAME}: Produktname
+${MESSAGEID}: AS2 Nachrichtennummer
+${SENDER}: Nachrichtensender (wenn bekannt, ansonsten "--")
+${RECEIVER}: Nachrichtenempfaenger (wenn bekannt, ansonsten "--")
+${HOST}: AS2 Server Host
+${LOG}: Log der Transaktion (mehrere Zeilen)
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Fehler in AS2 Nachricht ${MESSAGEID}
+
+
+[BODY]
+Die AS2 Nachricht ${MESSAGEID} von ${SENDER} an ${RECEIVER} mit dem Subject "${SUBJECT}" konnte nicht mit dem Status OK uebertragen werden.
+
+Transaktionslog:
+${LOG}
+
+--Bitte antworten Sie nicht auf diese Nachricht--

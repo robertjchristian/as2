@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xs:schema
+    xmlns:tns="urn:ietf:params:xml:ns:ediintcertificateexchange"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    targetNamespace="urn:ietf:params:xml:ns:ediintcertificateexchange"
+    elementFormDefault="qualified">
+    <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
+    <xs:element name="EDIINTCertificateExchangeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:TradingPartnerInfo"/>
+                <xs:element name="TrustRequest" type="tns:TrustRequestType" maxOccurs="unbounded"/>
+                <xs:element ref="tns:Extensions" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="requestId" type="tns:RequestIdType" use="optional"/>
+            <xs:anyAttribute namespace="##any" processContents="lax"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="EDIINTCertificateExchangeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="tns:TradingPartnerInfo"/>
+                <xs:element name="TrustResponse" type="tns:TrustResponseType" maxOccurs="unbounded"/>
+                <xs:element ref="tns:Extensions" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="requestId" type="tns:RequestIdType" use="optional"/>
+            <xs:anyAttribute namespace="##any" processContents="lax"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TradingPartnerInfo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Name">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="qualifier" type="xs:string" use="optional"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="MessageOriginated" type="xs:dateTime"/>
+                <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:anyAttribute namespace="##any" processContents="lax"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CertUsage" type="tns:CertUsageType"/>
+    <xs:simpleType name="RequestIdType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CertUsageType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="tlsClient"/>
+            <xs:enumeration value="tlsServer"/>
+            <xs:enumeration value="keyEncipherment"/>
+            <xs:enumeration value="digitalSignature"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="CertStatus" type="tns:CertStatusType"/>
+    <xs:simpleType name="CertStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Rejected"/>
+            <xs:enumeration value="Accepted"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="ReasonForRejection" type="xs:string"/>
+    <xs:element name="RespondByDate" type="xs:dateTime"/>
+    <xs:element name="ResponseURL" type="xs:anyURI"/>
+    <xs:complexType name="EndEntityType">
+        <xs:sequence>
+            <xs:element name="CertificateIdentifier" type="ds:X509IssuerSerialType"/>
+            <xs:element name="CertificateContentID" type="xs:string"/>
+            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax"/>
+    </xs:complexType>
+    <xs:complexType name="TrustRequestType">
+        <xs:sequence>
+            <xs:element ref="tns:CertUsage" maxOccurs="unbounded"/>
+            <xs:element ref="tns:RespondByDate"/>
+            <xs:element ref="tns:ResponseURL"/>
+            <xs:element name="EndEntity" type="tns:EndEntityType"/>
+            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax"/>
+    </xs:complexType>
+    <xs:complexType name="TrustResponseType">
+        <xs:sequence>
+            <xs:element ref="tns:CertStatus"/>
+            <xs:element ref="tns:ReasonForRejection" minOccurs="0"/>
+            <xs:element name="CertificateReference" type="ds:X509IssuerSerialType"/>
+            <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:anyAttribute namespace="##any" processContents="lax"/>
+    </xs:complexType>
+    <xs:element name="Extensions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

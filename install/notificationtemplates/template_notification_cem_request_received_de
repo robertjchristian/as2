@@ -1,0 +1,16 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer die Benachrichtigung von eingehenden Zertifikataustauschanfragen (CEM).
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+${PARTNER}: Partner, der die Austauschanfrage gestellt hat
+${PRODUCTNAME}: Produktname
+${HOST}: AS2 Server Host
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] CEM Anfrage erhalten
+
+
+[BODY]
+Ihr Partner ${PARTNER} hat eine Nachricht mit einer Anfrage fuer einen Zertifikataustausch geschickt. Die Anfrage wurde beantwortet. Bitte schauen Sie in das System, um Details des Prozesses zu sehen.
+
+--Bitte antworten Sie nicht auf diese Nachricht--

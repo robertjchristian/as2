@@ -1,0 +1,26 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer die Benachrichtigung einer Zertifikataenderung aufgrund eines CEM
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+${PRODUCTNAME}: Produktname
+${HOST}: AS2 Server Host
+${CERTIFICATEDESCRIPTION}: Beschreibung, welches Zertifikat jetzt benutzt wird
+${CERTIFICATETECHDETAILS}: Technische Einzelheiten zu den Zertifikaten, die in dieser Benachrichtigung referenziert werden
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Primaeres Zertifikat wurde ausgetauscht (CEM)
+
+
+[BODY]
+In Folge einer Zertifikatanfrage wurde ein primaeres Zertifikat des Systems ausgetauscht.
+
+${CERTIFICATEDESCRIPTION}
+
+Bitte schauen Sie in das System, um Details des Prozesses zu sehen. Wenn Sie diesen Veraenderungen nicht
+trauen, stellen Sie sie bitte zurueck und kontaktieren Sie Ihren Partner.
+
+Technische Informationen zu den in dieser Benachrichtigung benannten Zertifikaten:
+
+${CERTIFICATETECHDETAILS}
+
+--Bitte antworten Sie nicht auf diese Nachricht--

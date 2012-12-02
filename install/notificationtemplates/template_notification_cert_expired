@@ -1,0 +1,15 @@
+$Header:$
+This file contains the mail template for the certification expired notification email
+The following variables will be substituted:
+${PRODUCTNAME}: Product name
+${HOST}: Server host
+${ALIAS}: Certificate alias on the server side
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Certificate expired
+
+
+[BODY]
+The certificate ${ALIAS} on ${PRODUCTNAME}@${HOST} has been expired and is unusable. Please renew it.
+
+--Please do not reply to this mail--

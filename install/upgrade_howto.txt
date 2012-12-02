@@ -1,0 +1,29 @@
+To upgrade the mendelson opensource AS2 from a previous installed version please perform the following steps:
+
+
+1. 
+Make a backup of the installation directory of the mendelson opensource AS2. If anything happens during the update this backup could be copied over the installation and will restore the full state before the upgrade
+
+
+2. 
+Delete the jlib directory found below the installation directory.
+
+
+3.
+Upgrade (Windows) 
+-----------------
+Please download the installer, execute it and let it install directly over the existing installation. There are some personal filse that must not be overwritten. The installer will ask if you want to overwrite them, answer with NO to keep your personal settings.
+Afterwards start the mendelson opensource AS2 server. It will perform some database upgrades. If any additional steps are required the program will inform you.
+--> Done for Windows
+
+
+Upgrade (non-Windows)
+---------------------
+Please download the .zip archive and extract it directly over the existing installation. Please copy the following files from your backup (step 1) to the installation:
+*certificates.p12 (your keystore for encryption and signature)
+*jetty/etc/keystore (your ssl keystore)
+*jetty/etc/jetty.xml (your receipt web server settings)
+*notificationtemplates/* (your personal templates for the mail notification, skip this step if you haven't modified them)
+*.passwd (if you upgrade from b39 or younger)
+
+*Modify the start script if required (path to java installation etc)

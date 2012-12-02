@@ -1,0 +1,18 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer die Benachrichtigung ablaufender Zertifikate.
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+
+${PRODUCTNAME}: Produktname
+${HOST}: Server Host
+${ALIAS}: Alias des ensprechenden Zertifikats
+${DURATION}: Tage bis zum Auslaufen des Zertifikats
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Zertifikat laeuft ab
+
+
+[BODY]
+Das Zertifikat ${ALIAS} auf ${PRODUCTNAME}@${HOST} wird in ${DURATION} Tag(en) ablaufen. Bitte aktualisieren Sie es, es ist nach Ablauf dieser Zeit nicht mehr benutzbar.
+
+--Bitte antworten Sie nicht auf diese Nachricht--

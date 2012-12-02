@@ -1,0 +1,42 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer den Fall, dass eine
+Nachricht mit einer bereits verarbeiteten Nachrichtennummer erneut empfangen wird
+Die folgenden Variablen werden ersetzt
+${PRODUCTNAME}: Produktname
+${HOST}: AS2 Server Host
+${EXISTING_MESSAGE_INIT_TIME}: Erstellungszeit der bereits verarbeiteten Nachricht
+${MESSAGEID}: Nachrichtennummer der empfangenen Nachricht
+${SENDER}: Nachrichtensender
+${RECEIVER}: Nachrichtenempfaenger
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Nachricht abgewiesen, die bereits verarbeitet wurde
+
+
+[BODY]
+Ihr Partner ${SENDER} hat Ihnen eine Nachricht geschickt, deren Nachrichtennummer 
+sich mit der Nachrichtenummer einer bereits verarbeiteten Nachricht deckt. Diese
+Nachricht wurde nicht verarbeitet, sondern abgewiesen.
+Der Empfaenger ist Ihre lokale Station ${RECEIVER}.
+
+Das kann die folgenden Gruende haben und erfordert eine manuelle Ueberpruefung:
+
+
+*Die Nachrichtennummern, die ${SENDER} erstellt, sind nicht eindeutig und
+    einzigartig - das ist ein Problem auf der Seite Ihres Partners
+*${SENDER} schickte eine Nachricht erneut, weil er Ihre Empfangsbestaetigung nicht
+    erhalten hat. Dieses Vorgehen ist mit dem Risiko behaftet, dass die Datei zwei 
+    mal empfangen und verarbeitet wird und ist nicht zu empfehlen. Das AS2 Protokoll 
+    schreibt nicht eindeutig vor, wie mit doppelten Nachrichtennummern umgegangen 
+    werden muss und ob doppelte Nachrichten zurueckgewiesen werden muessen.
+
+
+Initialdatum der bereits verarbeiteten Nachricht: ${EXISTING_MESSAGE_INIT_TIME}
+Nachrichtennummer der bereits verarbeiteten Nachricht: ${MESSAGEID}
+
+Bitte schauen Sie in Ihr AS2 System, um zu sehen, was dort vorgefallen ist. Es kann
+sein, dass ${SENDER} einen anderen Status der Transaktion hat als Sie. Sie sollten
+Ihren Partner kontaktieren und das klaeren.
+
+--Bitte antworten Sie nicht auf diese Nachricht--

@@ -1,0 +1,21 @@
+$Header:$
+This file contains the mail template for a notification as result of a problem in the system
+The following variables will be substituted:
+${PRODUCTNAME}: The productname of the AS2 server
+${HOST}: The host where the AS2 server runs at
+${MESSAGE}: The error message
+${DETAILS}: Details about the system problem
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] System problem
+
+
+[BODY]
+A problem occured on the AS2 server instance: ${MESSAGE}
+
+${DETAILS}
+
+Please have a look at your system as soon as possible to see what happened there.
+
+--Please do not reply to this mail--

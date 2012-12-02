@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Log</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Einstellungen</h2>
+<hr>
+<h3><a href="#mdn">Proxy<br>
+  MDN </a><a href="#proxy"><br>
+  </a><a href="#lang">Sicherheit<br>
+  Verzeichnisse<br>
+  Systempflege<br>
+  Sprache </a><a href="#logperpip"><br>
+  </a></h3>
+<h3><a name="proxy" id="proxy"></a>Proxy</h3>
+  
+<p> Der mendelson opensource AS2 Server ben&ouml;tigt eine direkte Verbindung zum Internet. Wenn 
+  Sie keine direkte Verbindung zur Verf&uuml;gung stellen k&ouml;nnen, sondern 
+  nur &uuml;ber einen Proxy nach aussen komminizieren k&ouml;nnen, m&uuml;ssen 
+  Sie jenen hier eintragen.</p>
+<h3><a name="mdn" id="mdn"></a>MDN</h3>
+<p> Stellen Sie hier ein, wie lange das System auf eine asynchrone MDN warten 
+  soll, bevor die Nachricht als fehlerhaft markiert wird. Das sind in der Regel 
+  30 Minuten.</p>
+<h3><a name="security" id="security"></a>Sicherheit</h3>
+<p>Die Zertifikate/Schl&uuml;ssel zur Sicherung der Verbindung (ssl) und die Zertifikate 
+  zum Signieren und Verschl&uuml;sseln der Nachrichten sind voneinander getrennt. 
+  Bitte geben Sie zum Senden von Nachrichten &uuml;ber Https hier den Pfad zum 
+  Keystore mit den Zertifikaten f&uuml;r die ssl Verbindung an.</p>
+<h3><a name="directories" id="directories"></a>Verzeichnisse</h3>
+<p>Hier k&ouml;nnen Sie das Basisverzeichnis f&uuml;r die ein- und ausgehenden 
+  Nachrichten einstellen. Dies steht standardm&auml;ssig auf dem Unterverzeichnis 
+  &quot;messages&quot; im as2 Verzeichnis.</p>
+<h3><a name="maintenance" id="maintenance"></a>Systempflege</h3>
+<p>Sie k&ouml;nnen hier einstellen, wie lange Nachrichten (ohne Beachtung ihres 
+  Status) auf dem System gehalten werden sollen. Ist diese Option eingeschaltet, 
+  werden Nachrichten, die &auml;lter als die einstellte Anzahl von Tagen sind, 
+  gel&ouml;scht.</p>
+<h3><a name="lang" id="lang"></a>Sprache</h3>
+<p>W&auml;hlen Sie die Sprache der Ausgaben und der GUI. Diese Einstellung wird 
+  erst nach dem n&auml;chsten Starten des Servers g&uuml;ltig. Es werden im Moment 
+  die Sprachen Deutsch und Englisch unterst&uuml;tzt.</p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 11.03.09 16:48 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

@@ -1,0 +1,22 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer die Benachrichtigung im Falle eines System Problems
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+${PRODUCTNAME}: Produktname
+${HOST}: AS2 Server Host
+${MESSAGE}: Fehlermeldung
+${DETAILS}: Naehere Informationen bezueglich des Problems
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Systemproblem
+
+
+[BODY]
+Auf dem AS2 Server trat ein Systemproblem auf: ${MESSAGE}
+
+Bitte schauen Sie auf den Server, um zu sehen, ob der Betrieb noch fehlerfrei gewaehrleistet ist.
+
+Naehere Informationen zu dem Problem:
+${DETAILS}
+
+--Bitte antworten Sie nicht auf diese Nachricht--

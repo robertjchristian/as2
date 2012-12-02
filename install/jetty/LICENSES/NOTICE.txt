@@ -1,0 +1,7 @@
+This LICENSES directory holds the common CLAs and licenses for 
+various jetty projects at codehaus.
+
+Not all LICENSES apply to all the code.
+
+Please see the NOTICE.txt file in each project for how these
+licenses may apply

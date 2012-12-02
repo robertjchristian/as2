@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Quick start guide</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Quick start guide</h2>
+<hr>
+<p> This document will give you a short introduction of how to quick start with 
+  mendelson opensource as2.</p>
+<p>The text has been created by <strong>Mellerbeck</strong>, please use the mendelson 
+  forum to contact him on any question about it.</p>
+<p>&nbsp;</p>
+<p>-----</p>
+<p>This is my quick little quick start guide for setting a quick little test enivronment 
+  between two computers. The software is easy to setup but</p>
+<p>does contain a few little gotchas!</p>
+<p>Here we go...</p>
+<p>Download and install<br>
+  Also grab yourself a copy of portecle</p>
+<p>Run portecle on computer A and open up c:\mec\as2\certificates.p12 (this p12 
+  file contains all of your keys and certs for mec)</p>
+<p>Now you want to create a new keypair. So go to tools, generate key pair.</p>
+<p>Gotcha # 1 you need to select RSA (it defaults to DSA, do NOT use DSA)</p>
+<p>Create a certificate with Validity of 1000 and then fill in A's for everything 
+  except for country put AA.<br>
+  Set the Alias to A</p>
+<p>Ok, now you have your keypair, next you need to export your public cert to 
+  use on your other computer B. Right click your A key and then go</p>
+<p>export. The defaults (Head Certificate and DER Encoded) are fine. Save this 
+  as A.CER and copy it over to computer B</p>
+<p>Do this same exact process on computer B, exporting B to create a B.CER and 
+  copy it over to computer A.</p>
+<p>Now you need to bring the public key of computer A into computer B, and the 
+  public key of computer B into computer A. In portecle click tools,</p>
+<p>and then import trusted certificate. On computer A locate B.CER and click yes 
+  that you trust it. On Computer B locate A.CER and click yes that</p>
+<p>you trust it.</p>
+<p>Ok now we will configure the partners inside of the mendelson opensource AS2 server. Go to your computer 
+  A and click the partners tab. Delete the mendolson test partner.</p>
+<p>Click the mycompany and the under misc tab change name to A and AS2 id change 
+  to AAS2. Under security tab use the drop down to select the</p>
+<p>certificate alias of A. (If it doesn't show up then hit the reload keystore 
+  on the main screen, or maybe you need to try again on the steps</p>
+<p>above to create the A public key)</p>
+<p>Under MDN tab change the url to match your computer. Lets say computer A is 
+  http://192.168.10.1:8080/mec_as2/HttpReceiver<br>
+  Check that the local station check box is checked.</p>
+<p>Now that our local A station is configured we want to configure our partner 
+  B. Click new. Change the name to B and the AS2 id to BAS2. Under security click 
+  the drop down and select the certificate alias of B, notice that this is not 
+  a key symbol but a postcard like symbol. Under send we will put the address 
+  of our B computer. Lets pretend it is http://192.168.10.2:8080/mec_as2/HttpReceiver</p>
+<p>Do this same process on computer B to configure the local station A and also 
+  the partner B. Now you should be ready to transfer a test file!</p>
+<p>First create a test file, you can name it ASDF.txt. Now place this file in 
+  the outgoing directory on your server. If we were on server A this would be 
+  located in c:\mec\as2\messages\B\outbox drop the file here and you should see 
+  it transfer over to the other machine as well as recieve an MDN.</p>
+<p>GOTCHA #2 do not have a space in the name of your file, if you have a space 
+  the file will not send!!!!! I consider this a bug!</p>
+<p>GOTCHA #3 if the server is shut down incorrectly when you try to run it again 
+  it will not start, to fix, delete the mq_persiste_Joram folder.</p>
+<p>Hope this little quick start guide helps someone out!</p>
+<p>-Mellerbeck</p>
+<p><br>
+</p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 11.03.09 16:48 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

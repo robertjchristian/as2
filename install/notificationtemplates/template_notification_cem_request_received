@@ -1,0 +1,17 @@
+$Header:$
+This file contains the mail template for the CEM request received email
+The following variables will be substituted:
+${PARTNER}: Partner name of the initiator of the CEM
+${PRODUCTNAME}: The productname of the AS2 server
+${HOST}: The host where the AS2 server runs at
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] CEM request received
+
+
+[BODY]
+Your AS2 partner ${PARTNER} has sent a certificate exchange request message. An answer has been sent. Please check the system to track the exchange process.
+
+
+--Please do not reply to this mail--

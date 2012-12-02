@@ -1,0 +1,17 @@
+$Header:$
+Diese Datei beinhaltet die Benachrichtigungsvorlage fuer die Benachrichtigung eines abgelaufenen Zertifikats.
+Folgende Variablen koennen verwendet werden, sie werden entsprechend ersetzt:
+
+${PRODUCTNAME}: Produktname
+${HOST}: Server Host
+${ALIAS}: Alias des ensprechenden Zertifikats
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Zertifikat ist abgelaufen
+
+
+[BODY]
+Das Zertifikat ${ALIAS} auf ${PRODUCTNAME}@${HOST} abgelaufen. Bitte aktualisieren Sie es, es ist aktuell nicht mehr benutzbar.
+
+--Bitte antworten Sie nicht auf diese Nachricht--

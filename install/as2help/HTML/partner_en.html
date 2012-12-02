@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Partner</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Partner</h2>
+<hr>
+<h3><a href="#overview">Overview</a><br>
+  <a href="#settings">Settings</a></h3>
+<h2><a name="overview" id="overview"></a> Overview</h2>
+<p>Participants of every AS2 communication are you (localstation) and your trading 
+  partners. This is why the interface uses two different icons for these parties:</p>
+<table width="75%" border="0">
+  <tr>
+    <td width="4%"><img src="../images/localstation16x16.gif" width="16" height="16"></td>
+    <td width="96%">Local station (you)</td>
+  </tr>
+  <tr>
+    <td><img src="../images/singlepartner16x16.gif" width="16" height="16"></td>
+    <td>Trading partner (TP)</td>
+  </tr>
+</table>
+<p>The configuration of a partner differs depending if it is the local statation 
+  or the trading partner. The partner configuration GUI will not show some options 
+  if you are the TP/localstation. Please don't be confused about this.</p>
+<p>There has to be defined always min one local station for the server. You could 
+  create as many local stations as you wish, this allows to present different 
+  identities.<br>
+  Please remember that most settings in this panel belong to the remote partner. 
+  That is why the number of visible tabs is reduced if you have configured a partner 
+  as &quot;local station&quot;.</p>
+<p>&nbsp;</p>
+<h2><a name="settings" id="settings"></a> Settings</h2>
+<p>The partner settings define the behavior of the server depending on a partner 
+  in many ways: The following paragraph describes these settings:</p>
+<p><strong>Misc:<br>
+  <br>
+  </strong>Every TP and the local stations use an internal name (for the as2 server 
+  only) and a public AS2 id. The AS2 id must be sent to your partners to allow 
+  them to identify your messages.</p>
+<p>&nbsp;</p>
+<p><strong>Security:<br>
+  </strong><br>
+  This product supports encryption and digitial signature of AS2 messages. There 
+  are different encryption algorithm and signature algorith. You and your trading 
+  partner have to chose the same algorithms else the communication will fail.<br>
+  Please make an appointment with your partner about these AS2 communication settings.<br>
+</p>
+<p><strong><br>
+  MDN (Message Delivery Notification):</strong></p>
+<p>The AS2 protocol requires a receipt acknowledgement for every sent message. 
+  This ack is called &quot;<strong>MDN</strong>&quot; (<strong>Message Delivery 
+  Notification</strong>). A transaction is completed if the MDN to sent data arrives. 
+  There are two different types of MDN transfers: sync MDN and async MDN. Mainly 
+  it depends on the message receiver with mode to select. If you chose the sync 
+  MDN mode the MDN is sent on the same HTTP connection the message has been sent/received 
+  on. In this case there is no information needed to which URL a MDN should be 
+  sent to. If you chose the async MDN the AS2 messages contains information of 
+  where to send a MDN to. Because of this the sender of a message has to define 
+  a MDN URL in this case.<br>
+  The EDIINT standard does not define on how long to wait for a async MDN before 
+  setting the transaction on error. Mainly this time is set to 30 min but this 
+  could be defined in the AS2 server settings.</p>
+<p>&nbsp;</p>
+<p><strong>Directory polling:</strong></p>
+<p>There are different possiblities to send messages to the AS2 server in this 
+  product. You may use JMS or you could directly copy the data to an outbound 
+  directory of a defined partner. The poll manager for every partner will pick 
+  up these files, enwrapp them into AS2 messages, encrypt and sign them (is requested). 
+  This setting defines the bahavior of the poll manager per partner.<br>
+  Its possible to define file patterns or a list of files that should be ignored 
+  by the polling process.</p>
+<p>&nbsp;</p>
+<p><strong>Receipt:</strong></p>
+<p>It's possible to transmit the filename of a AS2 transmisson. Anyway this is 
+  not standardized and not every AS2 product supports this option.</p>
+<p>&nbsp;</p>
+<p><strong>HTTP authentication:</strong><br>
+  <br>
+  Beneath message encryption, digital signature, TLS (transport layer security, 
+  SSL) its also possible to define an additional passwort for the HTTP receipt. 
+  This could be set here.</p>
+<p>&nbsp;</p>
+<p><strong>Notification:</strong></p>
+<p>If you use message quota you could setup the quota notification here.<br>
+  <em><strong>Attention:</strong></em><br>
+  You have to activate this configuration possibility in the settings first (&quot;Interface&quot;).</p>
+<p>&nbsp;</p>
+<p><strong>HTTP Header:</strong></p>
+<p>Allows to reconfigure the HTTP headers of the AS2 messages and add new ones. 
+  Please be careful using these settings because its possible to stop the communication 
+  to a partner if you overwrite some reuqired AS2 Headers.<br>
+  <em><strong>Attention:</strong></em><br>
+  You have to activate this configuration possibility in the settings first (&quot;Interface&quot;). 
+</p>
+<p>&nbsp;</p>
+<p><strong>Send:</strong></p>
+<p>The AS2 messages are sent and received via HTTP or HTTPs. To perform this you 
+  need the receipt URL of your TP for every communication. Please contact your 
+  TP to get these data.<br>
+  Please do not change the default settings for subject and content type of the 
+  message unlike you TP requests to change them.<br>
+  It's also possible to set the content transfer encoding per partner. This is 
+  &quot;binary&quot; by default, you could also set &quot;base64&quot;.<br>
+  There are multiple AS2 versions out with different features. If your TP uses 
+  a AS2 solution &gt;= AS 1.1 you may compress the message data to reduce the 
+  sent data size.<br>
+  <br>
+</p>
+<p><strong>Events:</strong> </p>
+<p>For every inbound and outbound message there could be executed a user defined 
+  and partner specific command line command. This shell command may contain somehow 
+  the pattern &quot;${filename} &quot;, this will be substituted by the payload 
+  file name after the MDN has been received or a communication error occurs during 
+  sending the message. There are some other variables available for the replacement 
+  - please have a look at the AS2 Client for a current implemented list.<br>
+  There are two different commands: one for a successful sent message, one for 
+  a failed send approach.</p>
+<p>Sample: <br>
+  If you would like to execute a batch file on windows that will work on an outbound 
+  payload after sending for a specified partner please set up something like the 
+  following:</p>
+<p><code>cmd /c mybatch.bat ${filename}</code></p>
+<p>On Linux/UNIX the exact command depends on the used shell, e.g. <code>ksh -c &lt;command&gt;</code> 
+  for the KShell or <code>bash -c &lt;command&gt;</code> for the bash.</p>
+<p><br>
+  For example on Windows<br>
+  You want to copy the received file to &lt;filename&gt;.edi. Therefor you create 
+  the following shell script:</p>
+<p>copy.cmd:<br>
+  <code>copy %1 %1.edi</code></p>
+<p>Then write the following into the text box to run a command after receipt:<br>
+  <code>cmd /c copy.cmd ${filename}</code></p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 15.02.11 11:33 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

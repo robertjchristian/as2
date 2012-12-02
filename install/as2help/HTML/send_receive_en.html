@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Sending and receiving messages</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Sending and receiving messages</h2>
+<hr>
+<h3><a href="#receiptandsend">Connection<br>
+  </a><a href="#msgencryption">Directories<br>
+  </a><a href="#partnerdir">Partner directories</a></h3>
+<p>&nbsp;</p>
+<h3><a name="receiptandsend" id="receiptandsend"></a>Connection</h3>
+  
+<p>It is straight forward to integrate the as2 server to a integration system. 
+  We recomment the mendelson business integration. All in- and outbound messages 
+  are stored in a directory structure. All following directories are relative 
+  to the (defined in the preferences) &quot;messages&quot; directory.</p>
+<p>To send messages you have to move them into the outbound directory of your 
+  partner. The key data for each partner could be set up in the partner panel.<br>
+  Receiving the messages is an automatic process.<br>
+  <br>
+  The following URLs are defined by default:<br>
+  <strong>http://&lt;host&gt;:8080/as2/HttpReceiver<br>
+  https://&lt;host&gt;:8443/as2/HttpReceiver </strong><br>
+</p>
+<h3><a name="globaldir" id="globaldir"></a>Directories</h3>
+<p>Every inbound message is stored in the directory <strong>&quot;_raw_incoming&quot;</strong>, 
+  with date and time stamp.<br>
+  The following directories exist per partner:</p>
+<p>&nbsp;</p>
+<h3><a name="partnerdir" id="partnerdir"></a>Partner directories</h3>
+<p>Below the message directory the following directories exist:</p>
+<p><strong>&lt;Partnername&gt;</strong></p>
+<p><strong>&lt;Partnername&gt;/inbox<br>
+  </strong>Stores payloads for every inbound message.<br>
+  <em>This directory does only exist for local stations.</em></p>
+<p><strong>&lt;Partnername&gt;/outbox/&lt;localstation&gt;</strong><br>
+  Drop messages you would like to send to a special partner here.<br>
+  <em>This directory does not exist for local stations.</em><br>
+</p>
+<p><strong>&lt;Partnername&gt;/error/&lt;localstation&gt;/&lt;date&gt;</strong><br>
+  If an error occurs by enveloping the message it is moved here.<br>
+  <em>This directory does not exist for local stations.</em><br>
+</p>
+<p><strong>&lt;Partnername&gt;/sent/&lt;localstation&gt;/&lt;date&gt;</strong><br>
+  If the message has been sent successfully the data will be stored here in raw 
+  format.<br>
+  <em>This directory does not exist for local stations.</em></p>
+<p>&nbsp;</p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 1.07.09 10:01 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

@@ -1,0 +1,23 @@
+$Header:$
+This file contains the mail template for the transaction failure notification email
+The following variables will be substituted:
+${PRODUCTNAME}: Product name
+${MESSAGEID}: AS2 message id
+${SENDER}: Sender of the message (if known, else "--")
+${RECEIVER}: Receiver of the message (if known, else "--")
+${HOST}: AS2 server host
+${LOG}: Log of the transaction (multiple lines)
+${SUBJECT}: Subject of the AS2 message
+
+
+[SUBJECT]
+[${PRODUCTNAME}@${HOST}] Failure in AS2 message ${MESSAGEID}
+
+
+[BODY]
+The AS2 message ${MESSAGEID} from ${SENDER} to ${RECEIVER} with subject "${SUBJECT}" has not been completed with a state OK.
+
+Transaction log:
+${LOG}
+
+--Please do not reply to this mail--

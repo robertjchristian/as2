@@ -1,0 +1,247 @@
+04/2012 mendelson opensource AS2 1.1 b39
+
+Enhancement:
+*A retry of the connection attempt has been implemented if it fails the first time
+*MDN Auto recovery on server start has been added: If the server has been shut down and there are pending outbound MDN they are send after the server is up again and the MDN wait time has not been expired
+*If a transaction has been manually resend the original name is kept now and the transaction is marked as "resend"
+*A new temporary directory for files is used, this is below the installation directory now and no longer the systems temp directory
+*A new web interface is included. The password file for the web access access is ".passwd" (found in the installation directory). The default web interface URL is http://yourhost:8080/webas2/ now.
+*The underlaying database engine has been upgraded and the structure is incompatible, it is HSQLDB 2.x.x now. That means that an additional update script has to be started once if you upgrade from an earlier version of mendelson opensource AS2. The AS2 server will inform you if such an external update is required and how to perform it.
+*The database has been splitted, there is a configuration database and a runtime database now. The split will be performed on the first server start if the software is updated from an older version of the mendelson AS2
+
+Changes:
+*The JMS interface has been removed
+
+Fixes:
+*There has been a wrong format for december in the HHTP header if the locale is FR
+*The MDN wait time starts at the message send time now, was at message creation time
+
+
+Updates:
+Update to commons IO 2.1
+Update to VAADIN 6.7.3
+Update to HSQLDB 2.2.7
+
+Hint:
+The mendelson opensource AS2 will run fine with Java 64 bit VMs. If you have problems with the memory consumption please install a 64 bit java VM (not included), patch the VM with the "jurisdiction policy strength files" (Oracle download) and set the main memory of the JVM to 4 GB
+
+
+
+09/2011 mendelson opensource AS2 1.1 b37
+
+This is a maintenance release - it just fixes one configuration problem - it does not contain any change in the processing unit
+
+Enhancement:
+*A progress bar has been added for some operations in the client
+*Added the AS2 message subject to the event replacements
+
+Fixes:
+*The default value for the SSL keystore password was wrong, this leaded to the error message "Keystore was tampered with, or password was incorrect" if you try to send messages
+*Fixed a unmarshalling problem at config import
+*No notification mail has been send on send error
+*Error in the french versions localization at the partners event screen 
+*The user was unable to enter the HTTP Basic Authentication in the partner configuration
+
+Updates:
+Update to JORAM 5.6.0 (JMS provider)
+Update to HttpClient 4.1.2 
+
+
+08/2011 mendelson opensource AS2 1.1 b35
+
+Enhancement:
+*A status file for outbound transactions has been added again, this was removed in the prior version
+*New logdata structure: There is a logfile per day now in a single sub directory, the format is log/CCYYMMDD/as2n.log
+*To prevent flooting your partners AS2 server with messages the max number of messages to send per poll attempt could be defined in the partner settings now. All existing polls are set to the default value of 100 outbound transactions per poll. Please modify these settings if it does not fit your needs after an update.
+*User interface: a progress bar has been added for some operations (e.g. storing the partner settings)
+*The delivered keystore contains now the mendelson CA root certificate as trusted certificate
+*If a certificate/key has been deleted outside of the application (e.g. by using portecle) this is displayed
+in the related combobox now by a special icon
+
+Fixes:
+*The private key of an entry has not been found if there are two similar entries
+in the keystore (one key pair and one public key)
+*Problems sending XML data have been fixed. The problem occured if the data has been transmitted uncompressed, unsigned and unencrypted (which is very uncommon)
+*The partner/user specific events have not been processed for outbound connection problems
+*If the signature of an MDN could not be verified the transaction was disregarding this fact set to green
+*The linux start script ignored the command line parameters
+*There was a problem in setting up the HTTP authentication for data upload/MDN in the partner panel
+*If an MDN had a content transfer encoding set there occured a processing error on the MDN. The error
+message was "The MDN references a AS2Message with the message id "null" that does not exist."
+
+Updates:
+Update to MINA 2.0.4
+Update to JORAM 5.5.0 (JMS provider)
+Update to commons-pool-1.5.6 (pool core)
+Update to Bouncycastle 1.46 (crypto API)
+Update to javamail 1.4.4 (MIME API/mail API)
+Update to HTTP components 4.1 (HTTP/HTTPS sender)
+
+
+09/16/2010 mendelson opensource AS2 1.1 b33
+
+Enhancement:
+*SMTP Server authentication could set for outbound notification mail
+*Info panel per partner: Displays information about the trading partners AS2 system. If the trading partner uses an AS2 > 1.2 the profiles are displayed, too
+*New notification event: An email could be send on system errors
+*Encryption of messages uses less memory now, max file size improved
+*It's possible to setup the HTTP protocol version, either 1.0 or 1.1 (default: 1.1). This is required for some older proxies that don't understand HTTP 1.1.
+*File size of files that could be displayed in the file panel has been enhanced
+*Added context menu to the transaction overview, this allows manual resend of transactions (in a new transaction), detail info and delete actions
+
+Fixes:
+*Outbound HTTP date header was in wrong format
+*HTTP send (basic) authentication did not work
+*The content transfer encoding for inbound MDN was not processed
+
+
+Updates:
+Update to JORAM 5.3.1 (JMS provider)
+Update to commons-dbcp-1.4 (DB connection pool)
+Update to commons-pool-1.5.4 (pool core)
+
+
+
+01/26/2010 mendelson opensource AS2 1.1 b31
+
+Enhancement:
+*Max file size for transfered files has been improved
+*Export/import of configuration
+*Providing server state page at http://yourserver:yourport/as2/ServerState
+*New HTTP header: ediint-feature
+
+Fixes:
+*MIC calculation for inbound messages was wrong for some combinations
+*Signature verfication problem
+
+Updates:
+Update to jetty 6.1.22 (webserver)
+Update to Bouncycastle 1.45 (crypto API)
+Update to JORAM 5.2.6 (JMS provider)
+Update to HTTP components 4.01 (HTTP sender)
+
+
+
+10/07/2009 mendelson opensource AS2 1.1 b29
+
+Enhancement:
+*Max file size for transfered files has been inproved
+*Changes of partner names now rename the underlaying directories instead of creating new ones. (This is not done without asking the user)
+*MIC header value may contain blanks now
+*Number of internal database connections and JMS connections reduced for lower resource requirements
+*AS2 id may contain blanks now
+*MIC check is performed for signed messages only now
+*Content transfer encoding could setup for each partner now (base64 or binary)
+*New replaceable variables available for the command execution after receipt or send are available now. These are ${sender} and ${receiver}
+*New filters for the local station in the web client
+*All HTTP 2xx answers are accepted as OK now (even if the RFC allows HTTP 200 only)
+*The server state could be requested now (beneath the web client) using the URL /as2/ServerState
+
+Fixes:
+*Command after receipt (async MDN) has not been executed
+*Fixed an error in the MIC calculation if the message was signed and compressed
+
+Updates:
+Update to Bouncycastle 1.44 (crypto API)
+Update to JORAM 5.2.5 (JMS provider)
+
+---------------------------------------------------------------
+
+03/12/2009 mendelson opensource AS2 1.1 b27
+
+Enhancement:
+*Content MIC is checked now on message receipt
+*Execute command after message send, depending on the message state
+*Add jurisdiction unlimited strength policy test on server startup
+*Support of rsa-md5 and rsa-sha1im micalg parameter
+*New web interface
+
+
+Fixes:
+*Unsigned encrypted transfer leaded to HTTP headers in the payload
+*Error on unknown partners
+*Error on async transfer if the receiver doesnt know sender and receiver id
+*Poll interval was not visible in the client under linux
+*Error in sorting the transaction for german localization
+
+Updates:
+Update to Bouncycastle 1.41 (crypto API)
+
+
+---------------------------------------------------------------
+
+01/28/2008 mendelson opensource AS2 1.0 b21
+
+
+*It's possible to keep the original filename now if mendelson opensource AS2 is the receiver (and the sender sent the necessary information), could be defined per partner
+
+*Added content length header for sync MDN to improve compatibility to other as2 servers
+
+*2 different keys for encryption/signature possible
+
+*SQL connection pool implemented
+
+*Related software update: updated Bouncycastle to 1.38, Joram to 5.0.7, implemented MINA framework
+
+*As always there are a lot of smaller improvements and fixes as discussed in the mendelson community forum.
+
+
+---------------------------------------------------------------
+
+09/24/2007 mendelson opensource AS2 1.0 b19
+
+
+*Execute a user defined command after receipt of as2 messages per partner
+
+*mendelson opensource AS2 could send files with blanks in its filenames now
+
+*Compatibility issue: HTTP 202 is accepted beneath HTTP 200
+
+*HTTP auth supported
+
+*Usability: Its impossible to assign a cert instead of a key to the local station now
+
+*Transaction overview: The model-view problems for column sorting have been fixed
+
+---------------------------------------------------------------
+
+05/10/2007 mendelson opensource AS2 1.0 b17
+
+*Data compression is supported (AS2 1.1 feature). It could be set up per partner. Please remember that your TP has to support AS2 1.1 or higher for this feature
+
+*MDN options have been ignored so far (disposition-notification-options). Now it is possible to ask mendelson opensource AS2 for unsigned MDN or single signature algorithm only. mendelson opensource AS2 will still ask for signed MDN and allow SHA-1 and MD5 in answers.
+
+*If the inbound message contains attachments (AS2 1.2 feature) mendelson opensource AS2 now returns a processing error MDN with the message that attachments are not supported.
+
+---------------------------------------------------------------
+
+03/13/2007 mendelson opensource AS2 1.0 b15
+
+*Fixed a problem that occured if sender or receiver alias were names that lead to invalid filenames, the related files are stored to the filesystem
+
+*Web interface to monitor the server. The default URL is http://localhost:8080/mec_as2/monitoring.jsp, user: guest, password: guest
+
+*Fixed a bug in the proxy support
+
+*File storage system has been rewritten
+
+*Better overview on in- and outbound messages: raw file decrypted, message header, payload data in separate tabs
+
+*Inbound parsing of original filename implemented
+
+---------------------------------------------------------------
+
+01/19/2007 mendelson opensource AS2 1.0 b13
+
+*The server has a persistent message queue now as processing queue, based on JMS. The server integration could now be realized not only by sending files to an outbox dir of a specified partner but also by sending data to the JMS server.
+
+*It's possible to define a directory poll interval per partner
+
+*Its possible to define a file pattern ignore list per partner for the directory polls. This allows to copy file to the partners outbox directory and enable the poll on the file by renaming it
+
+*The GUI "send message to partner" operation no longer copies the file into the polled outbox dir but sends it directly to the as2 server message queue
+
+*Related software update: updated HSQLDB to v1.8.0_7, Bouncycastle to 1.35.
+
+*Enhanced server log to create links between processed filenames and the AS2 message ID for external log processing
+
