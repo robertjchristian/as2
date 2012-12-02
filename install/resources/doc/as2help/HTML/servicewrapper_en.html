@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Service wrapper</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Service wrapper</h2>
+<hr>
+<p> This document will give you a short intruduction of how to set up a service 
+  wrapper on mendelson opensource as2 using the wrapper software found at http://wrapper.tanukisoftware.org 
+  on windows.</p>
+<p>The work on the wrapper and the documentation has been created by <strong>AdamCox</strong>, 
+  please use the mendelson forum to contact him on any question about it.</p>
+<p>&nbsp;</p>
+<h3>Steps to setup wrapper:</h3>
+<p><br>
+  1.Extract wrapper to c:\wrapper<br>
+  2.Copy files/folder from wrapper extracted folder to the mec folder<br>
+  a.wrapper\bin\wrapper.exe ? mec\as2\<br>
+  b.wrapper\src\bin\ StartApp-NT.bat.in ? mec\as2\StartApp-NT.bat.in<br>
+  c.wrapper\src\bin\ StopApp-NT.bat.in ? mec\as2\StopApp-NT.bat.in<br>
+  d.wrapper\src\bin\ InstallApp-NT.bat.in ? mec\as2\ InstallApp-NT.bat.in<br>
+  e.wrapper\src\bin\ UninstallApp-NT.bat.in ? mec\as2 UninstallApp-NT.bat.in <br>
+  f.wrapper\src\bin\ App.bat.in ? mec\as2\App.bat.in<br>
+  g.wrapper\src\conf\wrapper.conf.in ? mec\as2\conf\wrapper.conf.in<br>
+  h.wrapper\lib\ ? mec_as2\lib\<br>
+  3.That should be all the files need. Now we need to edit the files.<br>
+  4.remove all the .in from the files that you copied into the mec_as2.<br>
+  5.edit all the *.bat files (remove the ..\)<br>
+  a.set _WRAPPER_CONF=&quot;%_REALPATH%\conf\wrapper.conf&quot;<br>
+  6.remove the &#8220;.in&#8221; from the mec\as2\conf\wrapper.conf.in<br>
+  7.edit the mec\as2\conf\wrapper.conf file. <br>
+  a.Use the appendix A as a guide<br>
+  b.Wrapper.conf is split into three major sections first will be the mec as2 
+  application configuration, second is wrapper configuration (untouched). Third 
+  is the windows service setup.<br>
+  8.first section of wrapper.conf (wrapper properties)<br>
+  a.in the third line wrapper.java.classpath.n = &#8220;&#8221; (n=incremented 
+  number)<br>
+  b.this will be every jar that mec as2 uses for example <br>
+  i.wrapper.java.classpath.1=lib/wrapper.jar<br>
+  ii.wrapper.java.classpath.2=mec_as2.jar<br>
+  iii.wrapper.java.classpath.3=jetty/start.jar<br>
+  iv.etc<br>
+  c. in the last portion for the fir section it should read wrapper.app.parameter.1=de.mendelson.comm.as2.AS2<br>
+  9.Second section (wrapper logging properties)<br>
+  a.Change \logs to \log to match up with AS2&#8217;s log directory<br>
+  10.last portions (services settings)<br>
+  a.these I will leave up to you. I replaced all the &#8220;@blah@&#8221; with 
+  &#8220;MECAS2&#8221; (leave out the quotes of course)Important notes:<br>
+  -Don&#8217;t edit wrapper.conf while the service is installed. Run the uninstall 
+  bat file then edit.<br>
+  -double click on the install bat to make it a service.<br>
+  -now it will be in your services.msc. (start and stop as desired) <br>
+  <br>
+  http://wrapper.tanukisoftware.org</p>
+<p>**************MY WRAPPER.CONF File***********************************</p>
+<p>#********************************************************************<br>
+  # Wrapper Properties<br>
+  #********************************************************************<br>
+  # Java Application<br>
+  wrapper.java.command=java# Java Main class. This class must implement the WrapperListener 
+  interface<br>
+  # or guarantee that the WrapperManager class is initialized. Helper<br>
+  # classes are provided to do this for you. See the Integration section<br>
+  # of the documentation for details.<br>
+  wrapper.java.mainclass=org.tanukisoftware.wrapper.WrapperSimpleApp</p>
+<p># Java Classpath (include wrapper.jar) Add class path elements as<br>
+  # needed starting from 1<br>
+  wrapper.java.classpath.1=lib/wrapper.jar<br>
+  wrapper.java.classpath.2=mec_as2.jar<br>
+  wrapper.java.classpath.3=jetty/start.jar<br>
+  wrapper.java.classpath.4=jlib/activation.jar<br>
+  wrapper.java.classpath.5=jlib/bcmail-jdk16-136.jar<br>
+  wrapper.java.classpath.6=jlib/bcprov-jdk16-136.jar<br>
+  wrapper.java.classpath.7=jlib/commons-codec-1.3.jar<br>
+  wrapper.java.classpath.8=jlib/commons-httpclient-3.0.1.jar<br>
+  wrapper.java.classpath.9=jlib/commons-logging.jar<br>
+  wrapper.java.classpath.10=jlib/dbgrid-1.0.4.jar<br>
+  wrapper.java.classpath.11=jlib/help4-nls.jar<br>
+  wrapper.java.classpath.12=jlib/help4.jar<br>
+  wrapper.java.classpath.13=jlib/hsqldb.jar<br>
+  wrapper.java.classpath.14=jlib/javamail-1.3.jar<br>
+  wrapper.java.classpath.15=jlib/ohj-jewt.jar<br>
+  wrapper.java.classpath.16=jlib/oracle_ice5.jar<br>
+  wrapper.java.classpath.17=jlib/xalan_2_6_0.jar<br>
+  wrapper.java.classpath.18=jlib/xerces_2_6_2.jar<br>
+  wrapper.java.classpath.19=jlib/xml-apis.jar<br>
+  wrapper.java.classpath.20=jlib/jms/activation.jar<br>
+  wrapper.java.classpath.21=jlib/jms/commons-logging-api.jar<br>
+  wrapper.java.classpath.22=jlib/jms/jakarta-regexp-1.2.jar<br>
+  wrapper.java.classpath.23=jlib/jms/JCup.jar<br>
+  wrapper.java.classpath.24=jlib/jms/jgroups-all.jar<br>
+  wrapper.java.classpath.25=jlib/jms/jms.jar<br>
+  wrapper.java.classpath.26=jlib/jms/jmxri.jar<br>
+  wrapper.java.classpath.27=jlib/jms/jmxtools.jar<br>
+  wrapper.java.classpath.28=jlib/jms/jndi.jar<br>
+  wrapper.java.classpath.29=jlib/jms/joram-client.jar<br>
+  wrapper.java.classpath.30=jlib/jms/joram-config.jar<br>
+  wrapper.java.classpath.31=jlib/jms/joram-connector.jar<br>
+  wrapper.java.classpath.32=jlib/jms/joram-gui.jar<br>
+  wrapper.java.classpath.33=jlib/jms/joram-kclient.jar<br>
+  wrapper.java.classpath.34=jlib/jms/joram-mom.jar<br>
+  wrapper.java.classpath.35=jlib/jms/joram-raconfig.jar<br>
+  wrapper.java.classpath.36=jlib/jms/joram-shared.jar<br>
+  wrapper.java.classpath.37=jlib/jms/jta.jar<br>
+  wrapper.java.classpath.38=jlib/jms/kxml.jar<br>
+  wrapper.java.classpath.39=jlib/jms/mail.jar<br>
+  wrapper.java.classpath.40=jlib/jms/midpapi.jar<br>
+  wrapper.java.classpath.41=jlib/jms/ow_monolog.jar<br>
+  wrapper.java.classpath.42=jlib/jms/soap.jar<br>
+  # Java Library Path (location of Wrapper.DLL or libwrapper.so)<br>
+  wrapper.java.library.path.1=lib# Java Additional Parameters<br>
+  #wrapper.java.additional.1=# Initial Java Heap Size (in MB)<br>
+  #wrapper.java.initmemory=3# Maximum Java Heap Size (in MB)<br>
+  #wrapper.java.maxmemory=64# Application parameters. Add parameters as needed 
+  starting from 1<br>
+  wrapper.app.parameter.1=de.mendelson.comm.as2.AS2</p>
+<p>#********************************************************************<br>
+  # Wrapper Logging Properties<br>
+  #********************************************************************<br>
+  # Format of output for the console. (See docs for formats)<br>
+  wrapper.console.format=PM# Log Level for console output. (See docs for log levels)<br>
+  wrapper.console.loglevel=INFO# Log file to use for wrapper output logging.<br>
+  wrapper.logfile=log/wrapper.log# Format of output for the log file. (See docs 
+  for formats)<br>
+  wrapper.logfile.format=LPTM# Log Level for log file output. (See docs for log 
+  levels)<br>
+  wrapper.logfile.loglevel=INFO# Maximum size that the log file will be allowed 
+  to grow to before<br>
+  # the log is rolled. Size is specified in bytes. The default value<br>
+  # of 0, disables log rolling. May abbreviate with the 'k' (kb) or<br>
+  # 'm' (mb) suffix. For example: 10m = 10 megabytes.<br>
+  wrapper.logfile.maxsize=0# Maximum number of rolled log files which will be 
+  allowed before old<br>
+  # files are deleted. The default value of 0 implies no limit.<br>
+  wrapper.logfile.maxfiles=0# Log Level for sys/event log output. (See docs for 
+  log levels)<br>
+  wrapper.syslog.loglevel=NONE</p>
+<p>#********************************************************************<br>
+  # Wrapper Windows Properties<br>
+  #********************************************************************<br>
+  # Title to use when running as a console<br>
+  wrapper.console.title=MECAS2</p>
+<p>#********************************************************************<br>
+  # Wrapper Windows NT/2000/XP Service Properties<br>
+  #********************************************************************<br>
+  # WARNING - Do not modify any of these properties when an application<br>
+  # using this configuration file has been installed as a service.<br>
+  # Please uninstall the service before modifying this section. The<br>
+  # service can then be reinstalled.</p>
+<p># Name of the service<br>
+  wrapper.ntservice.name=MECAS2</p>
+<p># Display name of the service<br>
+  wrapper.ntservice.displayname=MECAS2</p>
+<p># Description of the service<br>
+  wrapper.ntservice.description=MECAS2</p>
+<p># Service dependencies. Add dependencies as needed starting from 1<br>
+  wrapper.ntservice.dependency.1=</p>
+<p># Mode in which the service is installed. AUTO_START or DEMAND_START<br>
+  wrapper.ntservice.starttype=AUTO_START</p>
+<p># Allow the service to interact with the desktop.<br>
+  wrapper.ntservice.interactive=false<br>
+</p>
+<p>&nbsp;</p>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 11.03.09 16:48 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

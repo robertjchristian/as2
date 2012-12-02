@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head><title>Architektur</title>
+
+
+
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css"></head><body><h1>Architektur</h1>
+<hr>
+<p><img src="../images/structure.jpg"></p>
+<p>Der AS2 Server besteht aus mehreren Komponenten, die eine Anbindung an die 
+  Partner (TP, trading partner) und das jeweilige Integrationssystem gewährleisten.<br>
+  <br>
+  <strong>AS2 Server:</strong><br>
+  Der Server regelt den Ablauf der Nachrichtenverarbeitung und ist ausserdem für 
+  Verschlüsselung, digitale Signatur und Zugriffe auf alle anderen Komponenten 
+  verantwortlich.</p>
+<p><strong>AS2 Client:</strong><br>
+  Über den AS2 Client können sämtliche Einstellungen am Server 
+  vorgenommen werden, zusätzlich können Informationen über die 
+  Transaktionen angezeigt werden. Der Client beinhaltet auch die Partnerverwaltung, 
+  die Statistik und die gesamte Zertifikatverwaltung</p><p><strong>DB Server:</strong><br>
+  Der Datenbankserver speichert alle Informationen über die ein- und ausgehenden 
+  Transaktionen. Ausserdem werden die Stammdaten abgelegt.</p>
+<p><br>
+  <strong>HTTP Server:</strong><br>
+  Der HTTP Server dient zum einen als Servlet Container für das Empfangsservlet 
+  für eingehende Nachrichten, zum Anderen zum Hosten einiger Informationsseiten. 
+  Das Servlet empfängt AS2 Nachrichten und asynchron versandte MDN und schickt 
+  sie via RMI (remote method invokation) an den Server. Wenn AS2 Nachrichten mit 
+  synchroner MDN verschickt werden, kommt diese Komponente nicht zum Einsatz.</p>
+<p><strong>HTTP Sender:</strong><br>
+  Ist für den Versand von AS2 Nachrichten und bei synchroner MDN auch für 
+  den Empfang der MDN verantwortlich.</p>
+<p>&nbsp;</p>
+<hr>
+<table border="0" width="100%">
+  <tbody><tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 19.01.12 10:52 $</td>
+  </tr>
+</tbody></table>
+</body></html>

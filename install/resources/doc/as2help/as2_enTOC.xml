@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='ISO-8859-1'  ?>
+
+<toc version="1.0">
+
+<tocitem text="mendelson opensource AS2" target="as2_main">
+	<tocitem text="Installation" target="as2_install"/>
+	<tocitem text="Architecture" target="overview"/>
+	<tocitem text="Sending and receiving messages" target="send_receive"/>
+	<tocitem text="Logging" target="logging"/>
+	<tocitem text="Community guides"> 
+	     <tocitem text="Creating a service wrapper" target="community_servicewrapper"/>
+	     <tocitem text="Quick start" target="community_quickstart"/>
+	</tocitem>
+</tocitem>
+
+</toc>
+
+
+

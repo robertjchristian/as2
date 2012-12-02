@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>Senden und Empfangen</TITLE>
+<link rel="stylesheet" href="../../doc/mec_HTMLdoc.css">
+</HEAD>
+<h2>Senden und Empfangen von Nachrichten</h2>
+<hr>
+<h3><a href="#receiptandsend">Anbindung<br>
+  </a><a href="#msgencryption">Globale Verzeichnisse<br>
+  </a><a href="#partnerdir">Partnerverzeichnisse</a></h3>
+<p>&nbsp;</p>
+<h3><a name="receiptandsend" id="receiptandsend"></a>Anbindung</h3>
+  
+<p> Der as2 Server kann einfach an weiterverarbeitende System angebunden werden. 
+  Wir empfehlen dazu die mendelson business integration. S&auml;mtliche eingehende 
+  und ausgehende Nachrichten werden in einer Verzeichnisstruktur gehalten. Alle 
+  im folgenden genannten Sende- und Empfangsverzeichnisse beziehen sich auf das 
+  konfigurierbare Unterverzeichnis zum Verarbeiten von Nachrichte, das standardmaessig 
+  auf &quot;messages&quot; steht. <br>
+  Zum Versenden von Daten m&uuml;ssen diese nur in das entsprechende Partnerverzeichnis 
+  gelegt werden. Die Partnerdaten f&uuml;r jedes Verzeichnis sind hinterlegbar, 
+  sodass automatisch verschl&uuml;sselt, signiert und versandt wird.<br>
+  Der Empfang von Daten geschieht automatisch.<br>
+  <br>
+  Standardm&auml;ssig sind folgende URLs zum Empfang definiert:<br>
+  <strong>http://&lt;host&gt;:8080/as2/HttpReceiver<br>
+  https://&lt;host&gt;:8443/as2/HttpReceiver </strong><br>
+</p>
+<h3><a name="globaldir" id="globaldir"></a>Globale Verzeichnisse</h3>
+<p>Wenn eine Nachricht in den as2 Server eingeht, wird diese sofort uninterpretiert 
+  in einem Verzeichnis <strong>&quot;_raw_incoming&quot;</strong> gespeichert, 
+  entsprechend mit einem Zeitstempel im Dateinamen versehen.<br>
+  Die Nachricht wird interpretiert, Sender und Empf&auml;nger herausgefunden. 
+  Pro Partner gibt es nun folgende Verzeichnisstruktur:</p>
+<p>&nbsp;</p>
+<h3><a name="partnerdir" id="partnerdir"></a>Partnerverzeichnisse</h3>
+<p>Unterhalb des Nachrichtenverzeichnisses wird f&uuml;r jeden Partner folgende 
+  Verzeichnisstrukt angelegt:</p>
+<p><strong>&lt;Partnername&gt;</strong></p>
+<p><strong>&lt;Partnername&gt;/inbox<br>
+  </strong>Wenn Nachrichten eingehen, werden die Payloads hier gespeichert.<br>
+  <br>
+  <em>Dieses Verzeichnis wird nur f&uuml;r lokale Stationen angelegt.</em></p>
+<p><strong>&lt;Partnername&gt;/outbox</strong><strong>/&lt;Lokale station&gt;</strong><br>
+  Sollen Nachrichten an eine entsprechenden Partner versandt werden, m&uuml;ssen 
+  sie hier hineingelegt werden. <br>
+  <em>Dieses Verzeichnis wird nicht f&uuml;r lokale Stationen angelegt. </em></p>
+<p><strong>&lt;Partnername&gt;/error</strong><strong>/&lt;Lokale station&gt;/&lt;Datum&gt;</strong><br>
+  Kommt es zu einem Fehler beim Verpacken der Nachrichten, wird die Nachricht 
+  hierher verschoben.<br>
+  <em>Diese Verzeichnisse werden nicht f&uuml;r lokale Stationen angelegt. </em></p>
+<p><strong>&lt;Partnername&gt;/sent/&lt;Lokale station&gt;/&lt;Datum&gt;</strong><br>
+  Wurde eine Nachricht erfolgreich versandt, werden die entsprechenden Daten verpackt 
+  im Rohformat hier abgelegt.<br>
+  <em>Dieses Verzeichnis wird nicht f&uuml;r lokale Stationen angelegt. </em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>&nbsp;</h3>
+<hr>
+<table width="100%" border="0">
+  <tr> 
+    <td><a href="http://www.mendelson.de"><img src="../../doc/images/mec_banner.gif" border="0"></a></td>
+    <td class="date"><b>Last modified:</b> $Date: 11.03.09 16:48 $</td>
+  </tr>
+</table>
+</BODY>
+
+</HTML>

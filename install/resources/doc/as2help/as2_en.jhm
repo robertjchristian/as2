@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='ISO-8859-1'  ?>
+<map version="1.0">
+
+
+<!-- Images -->
+
+<!-- Topics -->
+	<mapID target="as2_main" url="HTML/as2_main_en.html"/>
+	<mapID target="as2_install" url="../doc/install.html"/>
+	<mapID target="send_receive" url="HTML/send_receive_en.html"/>
+	<mapID target="overview" url="HTML/as2_overview_en.html"/>
+	<mapID target="logging" url="HTML/logging_en.html"/>
+	<mapID target="community_servicewrapper" url="HTML/servicewrapper_en.html"/>
+	<mapID target="community_quickstart" url="HTML/quickstart_en.html"/>
+<!-- Index Bookmarks -->
+
+
+</map>
