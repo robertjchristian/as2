@@ -66,7 +66,15 @@ public class AS2 {
     	"client_server_session0.log.lck", 
     	"client_server_session1.log.lck",
     	"client_server_session2.log.lck",
-    	"mendelson_opensource_AS2.lock"};  
+    	"mendelson_opensource_AS2.lock",
+    	"messages",
+    	"AS2_DB_CONFIG.properties", 
+    	"AS2_DB_CONFIG.script",
+    	"AS2_DB_RUNTIME.properties", 
+    	"AS2_DB_RUNTIME.script",
+    	"client_server_session0.log.lck",
+    	"client_server_session0.log"
+    	};  
     	
     	for (String s : RUNTIME_ARTIFACTS) {
     		File f = new File(s);
