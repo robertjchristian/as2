@@ -8,4 +8,5 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="de.mendelson.comm.as2.AS2"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="as2"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:as2/install}"/>
 </launchConfiguration>
