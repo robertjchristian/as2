@@ -1,2 +1,12 @@
 *~
 classes
+AS2_DB_CONFIG.log
+AS2_DB_CONFIG.properties
+AS2_DB_CONFIG.script
+AS2_DB_RUNTIME.log
+AS2_DB_RUNTIME.properties
+AS2_DB_RUNTIME.script
+client_server_session0.log
+client_server_session0.log.lck
+mendelson_opensource_AS2.lock
+
