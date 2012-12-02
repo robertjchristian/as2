@@ -22,12 +22,14 @@ import java.util.logging.Logger;
  * @version $Revision: 1.1 $
  */
 public class UserAccess {
-
-    private File passwdFile = new File("passwd");
+	
     private Logger logger;
 
-    public UserAccess(Logger logger) {
-        this.logger = logger;
+    // TODO make system prop and fix so that default behavior fast fails if not found
+    private String passwdFile = "./resources/etc/passwd";
+       
+    public UserAccess(Logger logger) {    	
+        this.logger = logger;        
     }
 
     public User addUser(String userName, char[] password) throws Exception {
