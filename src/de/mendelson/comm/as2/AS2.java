@@ -1,19 +1,25 @@
 //$Header: /cvsroot-fuse/mec-as2/39/mendelson/comm/as2/AS2.java,v 1.1 2012/04/18 14:10:16 heller Exp $
 package de.mendelson.comm.as2;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.geom.AffineTransform;
+import java.io.File;
+import java.io.IOException;
+import java.util.Locale;
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+
+import org.apache.commons.io.FileUtils;
+
 import de.mendelson.comm.as2.client.AS2Gui;
-import de.mendelson.comm.as2.server.AS2Agent;
 import de.mendelson.comm.as2.preferences.PreferencesAS2;
+import de.mendelson.comm.as2.server.AS2Agent;
 import de.mendelson.comm.as2.server.AS2Server;
 import de.mendelson.comm.as2.server.UpgradeRequiredException;
 import de.mendelson.util.Splash;
 import de.mendelson.util.security.BCCryptoHelper;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.geom.AffineTransform;
-import java.util.Locale;
-import java.util.logging.Logger;
-import javax.swing.*;
 
 /*
  * Copyright (C) mendelson-e-commerce GmbH Berlin Germany
@@ -42,6 +48,46 @@ public class AS2 {
 
     /**Method to start the server on from the command line*/
     public static void main(String args[]) {
+    	
+    	// RJC:  Runtime creates database, lock, and log artifacts.  During 
+    	// development time this is very annoying.  Temporarily cleaning
+    	// up these artifacts...
+    	// TODO better solution at some point (need persistent state)
+    	String RUNTIME_ARTIFACTS[] = new String[] {
+    	"AS2_DB_CONFIG.log",         
+    	"AS2_DB_CONFIG.script",  
+    	"AS2_DB_RUNTIME.log",         
+    	"AS2_DB_RUNTIME.script",  
+    	"client_server_session0.logd",
+    	"client_server_session1.logd",
+    	"client_server_session2.logd",
+    	"AS2_DB_CONFIG.properties",
+    	"AS2_DB_CONFIG.tmp",
+    	"AS2_DB_RUNTIME.properties",
+    	"AS2_DB_RUNTIME.tmp",
+    	"client_server_session0.log.lck", 
+    	"client_server_session1.log.lck",
+    	"client_server_session2.log.lck",
+    	"mendelson_opensource_AS2.lock"};  
+    	
+    	for (String s : RUNTIME_ARTIFACTS) {
+    		File f = new File(s);
+    		if (f.isFile()) {
+    			f.delete();
+    		} else {
+    			if (f.isDirectory()) {
+    				try {
+    					FileUtils.deleteDirectory(f);	
+    				} catch (IOException e) {
+    					e.printStackTrace();
+    				}
+    				
+    			}
+    		}
+    	}
+    	
+
+    	
         String language = null;
         boolean startHTTP = true;
         boolean allowAllClients = false;
