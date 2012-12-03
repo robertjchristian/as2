@@ -1,5 +1,6 @@
 *~
 classes
+dist/classes/
 install/temp/
 install/log
 install/messages
