@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <jardesc>
     <jar path="as2/dist/as2.jar"/>
-    <options buildIfNeeded="true" compress="true" descriptionLocation="/as2/as2.jardesc" exportErrors="false" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/as2/AS2.jardesc" exportErrors="false" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
     <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
     <selectedProjects/>
     <manifest generateManifest="true" mainClassHandleIdentifier="=as2/src&lt;de.mendelson.comm.as2{AS2.java[AS2" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
@@ -58,12 +58,12 @@
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.util.clientserver.user"/>
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.message.loggui"/>
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.send"/>
-        <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.timing"/>
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.util.clientserver.clients.preferences"/>
+        <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.timing"/>
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.clientserver.serialize"/>
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.util.clientserver"/>
         <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.partner"/>
-        <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.client"/>
         <javaElement handleIdentifier="=as2/src&lt;sqlscript.config"/>
+        <javaElement handleIdentifier="=as2/src&lt;de.mendelson.comm.as2.client"/>
     </selectedElements>
 </jardesc>
