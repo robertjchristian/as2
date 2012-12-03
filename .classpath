@@ -78,5 +78,5 @@
 	<classpathentry kind="lib" path="install/upgrade/hsqldb2.2.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="install/jetty/lib/jsp-2.0/xmlParserAPIs-2.6.2.jar"/>
-	<classpathentry kind="output" path="classes"/>
+	<classpathentry kind="output" path="dist/classes"/>
 </classpath>
